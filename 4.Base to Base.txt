@@ -1,0 +1,39 @@
+-->1. You are given a number n.
+2. You are given a base b1. n is a number on base b.
+3. You are given another base b2.
+4. You are required to convert the number n of base b1 to a number in base b2.
+
+--ANS--
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,k,b;
+    cin>>n>>k>>b;
+    int sum =0;
+    int t=0;
+    
+    while(n)
+    {
+      int y=n%10;
+      int h=y*pow(k,t);
+      sum+=h;
+      t++;
+      n=n/10;
+    }
+    t=0;
+  int add =0;
+  while(sum)
+  {
+      int y =sum%b;
+      int h = y*pow(10,t);
+      add+=h;
+      t++;
+      sum=sum/b;
+      
+      
+  }
+  
+  cout<<add<<endl;
+    
+    
+}

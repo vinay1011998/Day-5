@@ -1,0 +1,63 @@
+-->1. You should first read the question and watch the question video.
+2. Think of a solution approach, then try and submit the question on editor tab.
+3. We strongly advise you to watch the solution video for prescribed approach.
+
+--ANS--
+#include<bits/stdc++.h>
+using namespace std;
+int getproductwithasingledigit(int n1,int d2,int base);
+int sum(int n1,int n2,int base)
+{
+    int total =0;
+    int carry=0;
+    int t=0;
+    while(n1>0||n2>0||carry>0)
+    {
+        int d1=n1%10;
+        int d2=n2%10;
+        int d=d1+d2+carry;
+        carry = d/base;
+        d=d%base;
+        total+=d*pow(10,t);
+        t++;
+        n1=n1/10;
+        n2=n2/10;
+        
+    }
+    return total;
+}
+int getproductwithasingledigit(int n1,int d2,int base)
+{
+    int total=0;
+    int carry=0;
+    int t=0;
+    while(n1>0||carry>0)
+    {
+        int d1=n1%10;
+        n1=n1/10;
+        int d=d1*d2+carry;
+        carry = d/base;
+        d=d%base;
+        total+=d*pow(10,t);
+        t++;
+    }
+    return total;
+}
+int main()
+{
+   int base,n1,n2;
+   cin>>base>>n1>>n2;
+   int total=0;
+   int t=1;
+   while(n2>0)
+   {
+       int d2=n2%10;
+       n2=n2/10;
+       int spld=getproductwithasingledigit(n1,d2,base);
+       total=sum(total,spld*t,base);
+       t=t*10;
+   }
+   
+   cout<<total<<endl;
+   
+}

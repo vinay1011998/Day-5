@@ -1,0 +1,23 @@
+-->1. You are given a number n.
+2. You are given a digit d.
+3. You are required to calculate the frequency of digit d in number n.
+
+--ANS--
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,k;
+    cin>>n>>k;
+    int count=0;
+    while(n)
+    {
+        int y=n%10;
+        if(y==k)
+        {
+            count++;
+        }
+        n=n/10;
+    }
+    cout<<count<<endl;
+}
